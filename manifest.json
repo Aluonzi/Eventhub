@@ -1,0 +1,17 @@
+{
+  "name": "EventHub UCU",
+  "short_name": "EventHub",
+  "description": "EventHub — Uganda Christian University Hostel Event Management",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#6c35de",
+  "background_color": "#f0f2f8",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='lg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236c35de'/%3E%3Cstop offset='100%25' stop-color='%230099cc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='url(%23lg)'/%3E%3Crect x='28' y='34' width='44' height='34' rx='4' fill='rgba(255,255,255,.18)'/%3E%3Crect x='33' y='28' width='34' height='42' rx='4' fill='rgba(255,255,255,.28)'/%3E%3Crect x='38' y='38' width='8' height='8' rx='2' fill='rgba(255,255,255,.9)'/%3E%3Crect x='54' y='38' width='8' height='8' rx='2' fill='rgba(255,255,255,.9)'/%3E%3Crect x='38' y='52' width='8' height='8' rx='2' fill='rgba(255,255,255,.65)'/%3E%3Crect x='54' y='52' width='8' height='8' rx='2' fill='rgba(255,255,255,.65)'/%3E%3Crect x='44' y='58' width='12' height='12' rx='2' fill='rgba(255,255,255,.95)'/%3E%3Cpath d='M50 12 L52 18 L58 18 L53 22 L55 28 L50 24 L45 28 L47 22 L42 18 L48 18 Z' fill='rgba(255,220,80,.95)'/%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
