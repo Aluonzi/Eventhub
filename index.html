@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-title" content="EventHub UCU"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <meta name="description" content="EventHub — Uganda Christian University Hostel Event Management"/>
-<link rel="apple-touch-icon" id="apple-icon"/>
+<link rel="apple-touch-icon" href="eventhub.png"/>
 <link rel="icon" type="image/svg+xml" id="fav-svg"/>
-<link rel="manifest" id="pwa-manifest"/>
+<link rel="manifest" href="manifest.json">
 <title>EventHub — UCU</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
@@ -1068,19 +1068,6 @@ var RT = {
 var PWA = {
   prompt: null,
   init: function(icons) {
-    var manifest = {
-      name:'EventHub UCU',short_name:'EventHub',
-      description:'Uganda Christian University Hostel Events',
-      start_url:'./',display:'standalone',orientation:'portrait-primary',
-      theme_color:'#6c35de',background_color:'#0d0821',
-      categories:['entertainment','social','lifestyle'],
-      icons:[
-        {src:icons.icon192,sizes:'192x192',type:'image/png',purpose:'any maskable'},
-        {src:icons.icon512,sizes:'512x512',type:'image/png',purpose:'any maskable'}
-      ]
-    };
-    var blob = new Blob([JSON.stringify(manifest)],{type:'application/json'});
-    var ml = document.getElementById('pwa-manifest'); if(ml) ml.href=URL.createObjectURL(blob);
     var fav = document.getElementById('fav-svg');
     var svgBlob = new Blob([LOGO.svg(32)],{type:'image/svg+xml'});
     if(fav) fav.href = URL.createObjectURL(svgBlob);
@@ -1123,15 +1110,9 @@ var PWA = {
   },
   registerSW: function() {
     if(!('serviceWorker' in navigator)) return;
-    var sw = [
-      "var C='eh-v2';",
-      "self.addEventListener('install',function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(['./']);}).catch(function(){}));self.skipWaiting();});",
-      "self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k!==C;}).map(function(k){return caches.delete(k);}));}).then(function(){return clients.claim();}));});",
-      "self.addEventListener('fetch',function(e){if(e.request.method!=='GET')return;if(e.request.url.includes('supabase.co'))return;",
-      "e.respondWith(fetch(e.request).then(function(r){var rc=r.clone();caches.open(C).then(function(c){c.put(e.request,rc);});return r;}).catch(function(){return caches.match(e.request);}));});"
-    ].join('');
-    var url = URL.createObjectURL(new Blob([sw],{type:'application/javascript'}));
-    navigator.serviceWorker.register(url).catch(function(){});
+    navigator.serviceWorker.register('sw.js').catch(function(error){
+      console.error('Service worker registration failed:', error);
+    });
   }
 };
 
